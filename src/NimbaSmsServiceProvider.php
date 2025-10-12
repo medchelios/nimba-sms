@@ -8,7 +8,7 @@ class NimbaSmsServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/nimba_sms.php', 'nimba_sms');
+        $this->mergeConfigFrom(__DIR__ . '/../config/nimba_sms.php', 'nimba_sms');
 
         $this->app->bind('nimba-sms', function ($app) {
             return new NimbaSmsService(
@@ -26,7 +26,7 @@ class NimbaSmsServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../../config/nimba_sms.php' => config_path('nimba_sms.php'),
+                __DIR__ . '/../config/nimba_sms.php' => config_path('nimba_sms.php'),
             ], 'config');
         }
     }

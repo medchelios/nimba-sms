@@ -38,4 +38,9 @@ class NimbaSmsService
     {
         return $this->client->get('/v1/webhooks');
     }
+
+    public function getPurchases(): array
+    {
+        return $this->client->get('/v1/purchases');
+    }
 }

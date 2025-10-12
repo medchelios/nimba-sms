@@ -48,6 +48,9 @@ try {
     // Get webhooks
     $webhooks = NimbaSms::getWebhooks();
     
+    // Get purchases
+    $purchases = NimbaSms::getPurchases();
+    
 } catch (Exception $e) {
     echo $e->getMessage();
 }

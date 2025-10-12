@@ -31,6 +31,13 @@ describe('NimbaSmsService', function () {
 
         expect($service)->toBeInstanceOf(NimbaSmsService::class);
     });
+
+    it('has getPurchases method', function () {
+        $client = new NimbaSmsClient(TEST_BASE_URL, TEST_TOKEN, 30);
+        $service = new NimbaSmsService($client, 'TEST');
+
+        expect(method_exists($service, 'getPurchases'))->toBeTrue();
+    });
 });
 
 describe('Exceptions', function () {

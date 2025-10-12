@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static array getAccounts()
  * @method static array getSenderNames()
  * @method static array getWebhooks()
+ * @method static array getPurchases()
  */
 class NimbaSms extends Facade
 {

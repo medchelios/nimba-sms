@@ -3,6 +3,7 @@
     "name": "tmoh/nimba-sms",
     "type": "library",
     "description": "Laravel package for NIMBA SMS API integration",
+    "version": "1.0.0",
     "keywords": ["laravel", "sms", "nimba", "api"],
     "license": "MIT",
     "authors": [

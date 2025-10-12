@@ -21,7 +21,7 @@ class NimbaSmsService
             'message' => $message,
         ];
 
-        return $this->client->post('/v1/sms/send', $data);
+        return $this->client->post('/v1/messages', $data);
     }
 
     public function getAccounts(): array

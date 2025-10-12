@@ -1,6 +1,11 @@
 # NIMBA SMS Laravel Package
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/tmoh/nimba-sms.svg?style=flat-square)](https://packagist.org/packages/tmoh/nimba-sms)
+[![Total Downloads](https://img.shields.io/packagist/dt/tmoh/nimba-sms.svg?style=flat-square)](https://packagist.org/packages/tmoh/nimba-sms)
+
 Laravel package for NIMBA SMS API integration.
+
+> 📖 **Official Documentation**: [NIMBA SMS API Documentation](https://developers.nimbasms.com/#section/Introduction)
 
 ## Installation
 

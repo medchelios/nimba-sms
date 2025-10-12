@@ -1,0 +1,14 @@
+/vendor/
+/node_modules/
+/.idea/
+/.vscode/
+/.env
+/.env.local
+/.env.*.local
+composer.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+*.log

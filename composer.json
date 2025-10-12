@@ -1,0 +1,64 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "tmoh/nimba-sms",
+    "type": "library",
+    "description": "Laravel package for NIMBA SMS API integration",
+    "keywords": ["laravel", "sms", "nimba", "api"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tmoh",
+            "email": "toure1206@gmail.com",
+            "homepage": "https://tmoh.dev"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^10.0|^11.0|^12.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.88",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "pestphp/pest": "^2.36",
+        "pestphp/pest-plugin-laravel": "^2.4",
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tmoh\\NimbaSms\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tmoh\\NimbaSms\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "test-coverage": "pest --coverage",
+        "format": "php-cs-fixer fix",
+        "format-check": "php-cs-fixer fix --dry-run --diff"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tmoh\\NimbaSms\\NimbaSmsServiceProvider"
+            ],
+            "aliases": {
+                "NimbaSms": "Tmoh\\NimbaSms\\Facades\\NimbaSms"
+            }
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php: [8.2, 8.3, 8.4]
+        laravel: [10.*, 11.*, 12.*]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, iconv, json, mbstring, pdo, phar, tokenizer, xml, xmlreader, xmlwriter, zip, curl, fileinfo, openssl, soap, sodium, xml, xmlreader, xmlwriter, zip
+        coverage: none
+
+    - name: Install dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+    - name: Execute tests
+      run: composer test

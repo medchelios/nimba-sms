@@ -15,8 +15,10 @@ class NimbaSmsService
 
     public function sendSms(string $recipient, string $message, ?string $senderName = null): array
     {
+        $finalSenderName = $senderName ?? $this->defaultSenderName;
+        
         $data = [
-            'sender_name' => $senderName ?? $this->defaultSenderName,
+            'sender_name' => $finalSenderName,
             'to' => [$recipient],
             'message' => $message,
         ];

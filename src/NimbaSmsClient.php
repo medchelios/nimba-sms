@@ -74,21 +74,36 @@ class NimbaSmsClient
     private function handleError(RequestException $e): void
     {
         $statusCode = $e->getResponse() ? $e->getResponse()->getStatusCode() : 0;
-        $body = $e->getResponse() ? $e->getResponse()->getBody()->getContents() : '';
-        $decodedBody = json_decode($body, true);
+        $body = '';
+        $decodedBody = [];
+
+        if ($e->getResponse()) {
+            $responseBody = $e->getResponse()->getBody();
+            if ($responseBody->isSeekable()) {
+                $responseBody->rewind();
+            }
+            $body = $responseBody->getContents();
+            $decodedBody = json_decode($body, true) ?? [];
+        }
+
+        $errorMessage = $decodedBody['detail']
+            ?? $decodedBody['message']
+            ?? $decodedBody['sender_name']
+            ?? (is_string($decodedBody) ? $decodedBody : null)
+            ?? $e->getMessage();
 
         if ($statusCode === 401) {
-            throw new UnauthorizedException($decodedBody['detail'] ?? 'Informations d\'authentification non fournies.');
+            throw new UnauthorizedException($errorMessage);
         }
 
         if ($statusCode === 429) {
-            throw new TooManyRequestsException($decodedBody['detail'] ?? 'Rate limit exceeded');
+            throw new TooManyRequestsException($errorMessage);
         }
 
         if ($statusCode >= 500) {
-            throw new ServerException($decodedBody['detail'] ?? 'Internal server error');
+            throw new ServerException($errorMessage);
         }
 
-        throw new NimbaSmsException($decodedBody['detail'] ?? $e->getMessage());
+        throw new NimbaSmsException($errorMessage);
     }
 }

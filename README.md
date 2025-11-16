@@ -25,7 +25,8 @@ Add to `.env`:
 
 ```env
 NIMBA_SMS_BASE_URL=https://api.nimbasms.com
-NIMBA_SMS_TOKEN=Basic xxxxx
+NIMBA_SMS_SERVICE_ID=your_service_id
+NIMBA_SMS_SERVICE_SECRET=your_service_secret
 NIMBA_SMS_DEFAULT_SENDER_NAME=NIMBA
 NIMBA_SMS_TIMEOUT=30
 ```
